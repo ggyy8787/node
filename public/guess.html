@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant-TW">
+
+<head>
+ <meta charset="UTF-8">
+ <title>我是標題</title>
+ <script src="guess.js" defer></script>
+ <link href="guess.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+  <div>
+    <h1>猜數字遊戲</h1>
+    <label for="guessField">猜一個數字 (1 到 100):</label>
+    <input type="number" class="guessField" id="guessField" min="1" max="100">
+    <button class="guessSubmit">提交</button>
+    <button class="restartBtn">重新開始</button>
+    <div class="guesses">猜測歷程：</div>
+    <div class="result"></div>
+    <div class="count"></div>
+  </div>
+</body>
