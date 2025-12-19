@@ -5,7 +5,7 @@ const path = require('path'); // (新) 載入 path 模組
 const dbConfig = require('./db-config');
 // --- 2. 建立 Express 應用程式和連線 ---
 const app = express();
-const port = 3000;
+const port = 443;
 const connection = mysql.createConnection(dbConfig);
 
 // 設定樣板引擎為 EJS
@@ -155,28 +155,32 @@ app.get('/edit/:username', (req, res) => {
   });
 });
 
-// --- 接收修改資料 (POST 練習) ---
-app.post('/update-bio', (req, res) => {
-  // 1. 拆信：從 req.body 拿出資料
-  const username = req.body.myID;     // 來自 hidden input (對應 SQL 的 username)
-  const newBio = req.body.newBio;     // 來自 text input
+app.post('/add-post', (req, res) => {
+  const username = req.body.username;   // 隱藏欄位：文章屬於誰
+  const content = req.body.content;     // 使用者輸入的貼文文字
 
-  // 2. 修改資料庫 (最重要的一步！)
-  // SQL: 更新 users 表格，設定 bio 為新值，條件是 username 符合
-  const sql = 'UPDATE users SET bio = ? WHERE username = ?';
+  // 1. 先取得 user_id
+  connection.query(
+      'SELECT user_id FROM users WHERE username = ?',
+      [username],
+      (err, results) => {
+          if (err) return res.send('查詢使用者失敗');
+          if (results.length === 0) return res.send('找不到使用者');
 
-  connection.query(sql, [newBio, username], (err, results) => {
-      if (err) {
-          console.error(err);
-          return res.send('更新失敗');
+          const userId = results[0].user_id;
+
+          // 2. 插入貼文
+          const sqlInsert = 'INSERT INTO posts (user_id, content) VALUES (?, ?)';
+          connection.query(sqlInsert, [userId, content], (err2) => {
+              if (err2) return res.send('新增貼文失敗');
+
+              console.log(`[系統] 新貼文由 ${username} 新增`);
+
+              // 3. 發文成功 → 回到個人頁面
+              res.redirect(`/profile/${username}`);
+          });
       }
-
-      console.log(`[系統紀錄] 使用者 ${username} 資料已更新`);
-
-      // 3. 導回個人頁面，讓使用者看到修改後的結果
-      // 這樣使用者會感覺畫面「刷新」了，且資料變了
-      res.redirect(`/profile/${username}`);
-  });
+  );
 });
 
 

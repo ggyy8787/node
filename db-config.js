@@ -1,11 +1,12 @@
 // 這個檔案專門存放資料庫的連線設定
 // 讓 read.js 和 add.js 可以共用
+require('dotenv').config(); //載入 .env
 const dbConfig = {
-  host: '10.232.73.222',   // 資料庫 IP 位址
-  port: 8878,              // MySQL 自訂連接埠
-  user: 'std_4',       //學生的帳號
-  password: 'pwd@BDstd',    // 學生的密碼
-  database: 'guestbook_30322',// 資料庫名稱
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 };
 // 匯出這個設定物件
 module.exports = dbConfig;
