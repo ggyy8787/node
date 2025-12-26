@@ -5,7 +5,7 @@ const path = require('path'); // (新) 載入 path 模組
 const dbConfig = require('./db-config');
 // --- 2. 建立 Express 應用程式和連線 ---
 const app = express();
-const port = 443;
+const port = 3000;
 const connection = mysql.createConnection(dbConfig);
 
 // 設定樣板引擎為 EJS
@@ -182,6 +182,24 @@ app.post('/add-post', (req, res) => {
       }
   );
 });
+
+app.post('/update-bio', (req, res) => {
+  const username = req.body.myID;   // hidden input 傳來的
+  const newBio = req.body.newBio;
+
+  const sql = 'UPDATE users SET bio = ? WHERE username = ?';
+
+  connection.query(sql, [newBio, username], (err) => {
+    if (err) {
+      console.error('更新簡介失敗:', err);
+      return res.status(500).send('更新失敗');
+    }
+
+    console.log(`[系統] ${username} 的簡介已更新`);
+    res.redirect(`/profile/${username}`);
+  });
+});
+
 
 
 // --- 5. 啟動伺服器 ---

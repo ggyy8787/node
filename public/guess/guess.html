@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant-TW">
-
 <head>
-  <div class="topnav">
-        <a class="active" href="../index.html">Home</a>
-        <a href="../snake/snake.html">蛇蛇</a>
-        <a href="../draw/draw.html">畫畫</a>
-        <a href="../guestbook/guestbook.html">留言板</a>
-        <a href="../guess/guess.html">猜數字</a>
-        </div>
- <meta charset="UTF-8">
- <title>我是標題</title>
- <script src="guess.js" defer></script>
- <link href="guess.css" rel="stylesheet" media="all">
+  <meta charset="UTF-8">
+  <title>猜數字遊戲</title>
+  <link href="guess.css" rel="stylesheet" media="all">
+  <script src="guess.js" defer></script>
 </head>
 
 <body>
-  <div>
+  <!-- 導覽列 -->
+  <nav class="topnav">
+    <a class="active" href="../index.html">Home</a>
+    <a href="../snake/snake.html">蛇蛇</a>
+    <a href="../draw/draw.html">畫畫</a>
+    <a href="../guestbook/guestbook.html">留言板</a>
+    <a href="../guess/guess.html">猜數字</a>
+  </nav>
+
+  <!-- 遊戲容器 -->
+  <div class="container">
     <h1>猜數字遊戲</h1>
     <label for="guessField">猜一個數字 (1 到 100):</label>
     <input type="number" class="guessField" id="guessField" min="1" max="100">
-    <button class="guessSubmit">提交</button>
-    <button class="restartBtn">重新開始</button>
+    <div>
+      <button class="guessSubmit">提交</button>
+      <button class="restartBtn">重新開始</button>
+    </div>
     <div class="guesses">猜測歷程：</div>
     <div class="result"></div>
     <div class="count"></div>
   </div>
 </body>
+</html>

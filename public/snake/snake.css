@@ -1,21 +1,95 @@
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
+/* ---------- 全域樣式 ---------- */
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
   color: #161616;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+}
+
+/* ---------- 導覽列 ---------- */
+.topnav {
+  display: flex;
+  justify-content: center;
+  background-color: #04AA6D;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.topnav a {
+  color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 20px;
   text-decoration: none;
   font-size: 17px;
+  transition: 0.3s;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #f8f5f5;
-  color: black;
+  background-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
-/* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #ff6a00;
+  border-radius: 6px;
+}
+
+/* ---------- 標題 ---------- */
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #0000ff, #6600cc, #ff3399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Start 按鈕 ---------- */
+#buttonStart {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#buttonStart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ---------- Canvas ---------- */
+#canvas {
+  display: block;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 4px solid #04AA6D;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* 深色模式 Canvas */
+@media (prefers-color-scheme: dark) {
+  #canvas {
+    background-color: #1e1e1e;
+    border: 4px solid #ff6a00;
+  }
 }

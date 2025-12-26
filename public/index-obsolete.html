@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant-TW">
+
+<head>
+ <meta charset="UTF-8">
+ <title>我是標題</title>
+ <link href="styles.css" rel="stylesheet" media="all">
+ <script src="script.js" defer></script>
+</head>
+
+<div id="wrap">
+
+    <body>
+        <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="./snake/snake.html">蛇蛇</a>
+        <a href="./draw/draw.html">畫畫</a>
+        <a href="./guestbook/guestbook.html">留言板</a>
+        <a href="./guess/guess.html">猜數字</a>
+        </div>
+        <div class=".madarin">
+
+        <h1>你好</h1>
+
+            <hr id="rainbow-hr" style="height:8px; border:none; border-radius:4px; width:80%; background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);">
+
+        <h1>這是圖片</h1>
+            
+            <img src="images.jpg" width="300" alt="野獸先輩">
+
+        <p>這是內容</p>
+
+        <h2>這是超連結</h2>
+            
+            <a href="https://youtu.be/jG2AciJ3zHY?si=Ldv1whkWfX3Iz-Yg" target="_blank" rel="noopener noreferrer">仲夏夜之淫夢</a>
+
+        <h3>這是隱藏按鈕</h3>
+
+            <button id="toggleBtn" onclick="toggleImg()">顯示圖片</button>
+            <img id="hiddenImg" src="images2.jpg" width="300" alt="阿布高和" style="display:none;">
+            <script>
+            function toggleImg() {
+                const img = document.getElementById('hiddenImg');
+                const btn = document.getElementById('toggleBtn');
+                if (img.style.display === 'none' || img.style.display === '') {
+                    img.style.display = 'block';
+                    btn.textContent = '隱藏圖片';
+                } else {
+                    img.style.display = 'none';
+                    btn.textContent = '顯示圖片';
+                }
+            }
+            </script>
+
+        <h4>這是嵌入</h4>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194615.253281337!2d121.0744238064669!3d24.992764774946714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681ef938712e31%3A0x297226dbd8462d1b!2z6JeN6Imy5aSp56m6Qmx1ZVNreQ!5e0!3m2!1szh-TW!2stw!4v1757641150174!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EHM2OIcG8Ok?si=zBob9fsV7yTzo-5-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <h1>這是跑馬燈</h1>
+
+            <div id="marquee-container" style="height:500px; overflow:hidden; position:relative;">
+                <div id="marquee-content" style="position:absolute; width:100%;">
+                    <div class="tenor-gif-embed" data-postid="19821875" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%" >
+                        <a href="https://tenor.com/view/%E9%96%83%E9%9B%BB%E4%BA%94%E9%80%A3%E9%9E%AD-gif-19821875">閃電五連鞭 GIF</a>from 
+                        <a href="https://tenor.com/search/%E9%96%83%E9%9B%BB%E4%BA%94%E9%80%A3%E9%9E%AD-gifs">閃電五連鞭 GIFs</a>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            <script>
+            const marqueeContainer = document.getElementById('marquee-container');
+            const marqueeContent = document.getElementById('marquee-content');
+            let direction = 'up';
+            let speed = 2;
+            let pos = 0;
+
+            function animateMarquee() {
+                const containerHeight = marqueeContainer.offsetHeight;
+                const contentHeight = marqueeContent.offsetHeight;
+
+                if (direction === 'up') {
+                    pos -= speed;
+                    if (pos <= -contentHeight) {
+                        direction = 'down';
+                        pos = -contentHeight;
+                    }
+                } else {
+                    pos += speed;
+                    if (pos >= containerHeight) {
+                        direction = 'up';
+                        pos = containerHeight;
+                    }
+                }
+                marqueeContent.style.top = pos + 'px';
+                requestAnimationFrame(animateMarquee);
+            }
+
+            // Initialize position
+            marqueeContent.style.top = '0px';
+            requestAnimationFrame(animateMarquee);
+            </script>
+
+        <h1>聯絡我們</h1>
+
+            <p>如果您有任何問題，請隨時聯絡我們！</p>
+
+        </div>
+
+    </div>
+    
+    <a href="#wrap" id="top">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2pkamx6dzJ2b2R6dzU5aWh4eGplYWhlM3hkdnVtazNiZ3d6bWg1OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f3e3vLxB7TOuIxDVrX/giphy.gif" alt="TOP" width="100">
+    </a>
+    </body>
+</html>
