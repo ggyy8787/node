@@ -1,123 +1,72 @@
-/* ---------- 全域樣式 ---------- */
+:root {
+  --bg: #fff7d6;
+  --panel: #ffffff;
+  --text: #333;
+  --accent: #ff9f68;
+  --accent2: #ff6aa2;
+  --nav: linear-gradient(90deg, #ff9f68, #ff6aa2);
+}
+
+body.dark-mode {
+  --bg: #1f1f2e;
+  --panel: #2a2a3d;
+  --text: #f3f3f3;
+  --nav: linear-gradient(90deg, #3a3a5e, #2a2a3d);
+}
+
 body {
-  font-family: "Noto Sans TC", sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
-  color: #161616;
-  transition: background 0.4s, color 0.4s;
+  font-family: "Noto Sans TC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.4s;
 }
 
-/* 深色模式 */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-    color: #f0f0f0;
-  }
-}
-
-/* ---------- 導覽列 ---------- */
+/* 導覽列 */
 .topnav {
   display: flex;
   justify-content: center;
-  background-color: #04AA6D;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: var(--nav);
+  padding: 12px 0;
 }
 
 .topnav a {
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
   text-decoration: none;
-  font-size: 17px;
-  transition: 0.3s;
 }
 
 .topnav a:hover {
-  background-color: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-.topnav a.active {
-  background-color: #ff6a00;
-  border-radius: 6px;
-}
-
-/* ---------- Canvas ---------- */
+/* 畫布 */
 #canvas {
   display: block;
-  margin: 20px auto;
-  background-color: #fff;
-  border: 4px solid #04AA6D;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  margin: 30px auto;
+  border-radius: 20px;
+  background: var(--panel);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
-/* 深色模式 Canvas */
-@media (prefers-color-scheme: dark) {
-  #canvas {
-    background-color: #1e1e1e;
-    border: 4px solid #ff6a00;
-  }
-}
-
-/* ---------- 控制面板 ---------- */
+/* 控制區 */
 div {
   text-align: center;
-  margin: 20px 0;
 }
 
-input[type="color"],
-input[type="range"] {
-  padding: 6px;
-  margin: 0 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+/* 按鈕 */
+button {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: #fff;
   cursor: pointer;
   transition: 0.3s;
 }
 
-input[type="color"]:hover,
-input[type="range"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* ---------- 按鈕 ---------- */
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #fff;
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-/* ---------- 圖片展示 ---------- */
-#show {
-  display: block;
-  margin: 20px auto;
-  max-width: 90%;
-  border: 3px solid #04AA6D;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-/* 深色模式圖片邊框 */
-@media (prefers-color-scheme: dark) {
-  #show {
-    border: 3px solid #ff6a00;
-  }
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(255,120,160,0.6);
 }

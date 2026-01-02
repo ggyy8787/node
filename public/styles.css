@@ -1,24 +1,14 @@
-/* ---------- CSS 變數 ---------- */
+/* ---------- CSS 變數（預設：白色模式） ---------- */
 :root {
   --bg-color: #fbf9cc;
   --text-color: #333;
-  --card-bg: #fff;
+  --card-bg: #ffffff;
   --nav-bg: linear-gradient(90deg, #232526, #414345);
   --btn-bg: linear-gradient(90deg, #ff6a00, #ee0979);
 }
 
-/* 深色模式系統偏好 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #121212;
-    --text-color: #f0f0f0;
-    --card-bg: #1e1e1e;
-    --nav-bg: linear-gradient(90deg, #000000, #333333);
-    --btn-bg: linear-gradient(90deg, #ff6a00, #ee0979);
-  }
-}
 
-/* 手動切換 dark-mode */
+/* ---------- 深色模式（手動切換） ---------- */
 body.dark-mode {
   --bg-color: #121212;
   --text-color: #f0f0f0;
@@ -27,7 +17,6 @@ body.dark-mode {
   --btn-bg: linear-gradient(90deg, #ff6a00, #ee0979);
 }
 
-/* 全域樣式 */
 body {
   background: var(--bg-color);
   color: var(--text-color);
@@ -37,7 +26,7 @@ body {
   transition: background 0.4s, color 0.4s;
 }
 
-/* 導覽列 */
+
 .topnav {
   background: var(--nav-bg);
   position: sticky;
@@ -47,20 +36,24 @@ body {
   justify-content: center;
   z-index: 1000;
 }
+
 .topnav a {
   color: #fff;
   text-decoration: none;
   padding: 12px 20px;
   transition: 0.3s;
 }
+
 .topnav a:hover {
   background-color: rgba(255,255,255,0.15);
   transform: translateY(-2px);
 }
+
 .topnav a.active {
   background-color: #ff6a00;
   border-radius: 6px;
 }
+
 
 /* Hero */
 #hero {

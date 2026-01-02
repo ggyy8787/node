@@ -1,153 +1,112 @@
-/* ---------- 全域 ---------- */
+:root {
+  --bg: #fff7d6;
+  --panel: #ffffff;
+  --text: #333;
+  --accent: #ff9f68;
+  --accent2: #ff6aa2;
+  --nav: linear-gradient(90deg, #ff9f68, #ff6aa2);
+}
+
+body.dark-mode {
+  --bg: #1f1f2e;
+  --panel: #2a2a3d;
+  --text: #f3f3f3;
+  --nav: linear-gradient(90deg, #3a3a5e, #2a2a3d);
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans TC", sans-serif;
-  background-color: #f0f0f0;
-  color: #161616;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: background 0.4s, color 0.4s;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* 深色模式 */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-    color: #f0f0f0;
-  }
-}
-
-/* ---------- 導覽列 ---------- */
+/* 導覽列 */
 .topnav {
   display: flex;
   justify-content: center;
-  background-color: #04AA6D;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: var(--nav);
+  padding: 12px 0;
 }
 
 .topnav a {
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
   text-decoration: none;
-  font-size: 17px;
+}
+
+/* ===== Guess 主卡片 ===== */
+body > div {
+  max-width: 480px;
+  margin: 100px auto;
+  background: var(--panel);
+  padding: 40px 36px;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  text-align: center;
+  animation: floatIn 0.8s ease;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 文字間距 */
+body > div p {
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+
+/* 按鈕 */
+button {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: #fff;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.topnav a:hover {
-  background-color: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
-
-.topnav a.active {
-  background-color: #ff6a00;
-  border-radius: 6px;
-}
-
-/* ---------- 遊戲容器 ---------- */
-.container {
-  background-color: #fff;
-  border-radius: 16px;
-  padding: 40px 30px;
-  max-width: 400px;
-  width: 90%;
-  margin: 40px auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  text-align: center;
-  transition: background 0.4s, color 0.4s;
-}
-
-/* 深色模式容器 */
-@media (prefers-color-scheme: dark) {
-  .container {
-    background-color: #1e1e1e;
-    color: #f0f0f0;
-  }
-}
-
-/* ---------- 標題 ---------- */
-h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #0000ff, #6600cc, #ff3399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ---------- 輸入框 ---------- */
-.guessField {
-  width: 80%;
-  padding: 12px;
-  font-size: 18px;
-  background-color: #f0f0f0;
-  color: #161616;
-  border: 1px solid #555;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  transition: background 0.3s, color 0.3s;
-}
-
-@media (prefers-color-scheme: dark) {
-  .guessField {
-    background-color: #2a2a2a;
-    color: #fff;
-    border: 1px solid #888;
-  }
-}
-
-/* ---------- 按鈕 ---------- */
-button {
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #fff;
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transform: scale(1.1);
 }
-
-/* ---------- 遊戲結果 ---------- */
-.result {
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 18px;
-  min-height: 40px;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.result.game-over {
-  background-color: #ff1744;
-  color: #fff;
-}
-
-.result.success {
-  background-color: #00e676;
-  color: #000;
-}
-
-.guesses,
-.count {
-  margin-top: 10px;
+/* ===== 輸入框 ===== */
+input[type="number"],
+input[type="text"] {
+  width: 80%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 2px solid transparent;
   font-size: 16px;
-  color: #555;
+  outline: none;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  margin-bottom: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .guesses, .count {
-    color: #ccc;
-  }
+/* 深色模式輸入框 */
+body.dark-mode input[type="number"],
+body.dark-mode input[type="text"] {
+  background: #1f1f2e;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* focus 發光 */
+input:focus {
+  border-color: var(--accent2);
+  box-shadow: 0 0 0 4px rgba(255,120,160,0.35);
 }
