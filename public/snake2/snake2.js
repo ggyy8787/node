@@ -27,7 +27,7 @@ class Snake {
     }
 
     drawSnake() {
-        // 死蛇：只畫，不更新
+        
         if (!this.alive) {
             this.drawBody();
             return;
@@ -123,7 +123,7 @@ class Apple {
     }
 
     putApple() {
-        // ⭐ Game Over 後絕不生成
+        
         if (isGameOver) return;
 
         let x, y, valid = false;
@@ -156,7 +156,7 @@ function drawScore() {
     ctx.fillText("P2: " + snake2.score, 10, 40);
 }
 
-/* 🐍 蛇互撞 → 直接 Game Over */
+
 function checkSnakeVsSnake() {
     if (isGameOver) return;
     if (!snake1.alive || !snake2.alive) return;
@@ -184,7 +184,7 @@ function checkSnakeVsSnake() {
     }
 }
 
-/* ⭐ 兩隻蛇都死 → Game Over */
+
 function checkBothDead() {
     if (!isGameOver && !snake1.alive && !snake2.alive) {
         endGame("BOTH SNAKES DEAD");
@@ -197,7 +197,7 @@ function drawGame() {
     snake1.drawSnake();
     snake2.drawSnake();
     checkSnakeVsSnake();
-    checkBothDead();   // ⭐ 關鍵
+    checkBothDead();   
     drawScore();
 }
 
